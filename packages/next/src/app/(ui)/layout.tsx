@@ -27,14 +27,17 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const session = await auth();
+  // const session = await auth();
 
-  if (!session) {
-    return signIn();
-  }
+  // if (!session) {
+  //   return signIn();
+  // }
 
   return (
-    <html lang="en" {...mantineHtmlProps}>
+    <html
+      lang="en"
+      {...mantineHtmlProps}
+    >
       <head>
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
