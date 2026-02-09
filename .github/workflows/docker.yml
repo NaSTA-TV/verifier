@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: docker built -t verifier .
+      - run: docker build -t verifier .
       - run: docker image tag verifier:latest ghcr.io/nasta-tv/verifier:${{github.ref_name}}-${{github.run_number}}
         if: github.ref_type == 'branch'
       - run: |
