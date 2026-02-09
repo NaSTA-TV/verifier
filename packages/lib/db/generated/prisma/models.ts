@@ -8,10 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/CreditRoleName.ts'
-export type * from './models/CreditRole.ts'
-export type * from './models/Credit.ts'
-export type * from './models/Event.ts'
 export type * from './models/Account.ts'
 export type * from './models/Session.ts'
 export type * from './models/User.ts'

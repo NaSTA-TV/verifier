@@ -18,6 +18,7 @@ COPY prisma/schema.prisma ./prisma/schema.prisma
 COPY prisma/models ./prisma/models
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 RUN --mount=type=cache,target=.yarn/cache \
+  SKIP_ENV_VALIDATION=1 \
   yarn install --immutable
 
 FROM install AS build

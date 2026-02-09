@@ -184,7 +184,6 @@ export type UserWhereInput = {
   image?: Prisma.StringNullableFilter<"User"> | string | null
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
-  created_events?: Prisma.EventListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -195,7 +194,6 @@ export type UserOrderByWithRelationInput = {
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   sessions?: Prisma.SessionOrderByRelationAggregateInput
-  created_events?: Prisma.EventOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -209,7 +207,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   image?: Prisma.StringNullableFilter<"User"> | string | null
   accounts?: Prisma.AccountListRelationFilter
   sessions?: Prisma.SessionListRelationFilter
-  created_events?: Prisma.EventListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -242,7 +239,6 @@ export type UserCreateInput = {
   image?: string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  created_events?: Prisma.EventCreateNestedManyWithoutCreated_byInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -253,7 +249,6 @@ export type UserUncheckedCreateInput = {
   image?: string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  created_events?: Prisma.EventUncheckedCreateNestedManyWithoutCreated_byInput
 }
 
 export type UserUpdateInput = {
@@ -264,7 +259,6 @@ export type UserUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  created_events?: Prisma.EventUpdateManyWithoutCreated_byNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -275,7 +269,6 @@ export type UserUncheckedUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  created_events?: Prisma.EventUncheckedUpdateManyWithoutCreated_byNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -331,20 +324,6 @@ export type UserMinOrderByAggregateInput = {
   image?: Prisma.SortOrder
 }
 
-export type UserCreateNestedOneWithoutCreated_eventsInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCreated_eventsInput, Prisma.UserUncheckedCreateWithoutCreated_eventsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreated_eventsInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutCreated_eventsNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutCreated_eventsInput, Prisma.UserUncheckedCreateWithoutCreated_eventsInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCreated_eventsInput
-  upsert?: Prisma.UserUpsertWithoutCreated_eventsInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCreated_eventsInput, Prisma.UserUpdateWithoutCreated_eventsInput>, Prisma.UserUncheckedUpdateWithoutCreated_eventsInput>
-}
-
 export type UserCreateNestedOneWithoutAccountsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutAccountsInput, Prisma.UserUncheckedCreateWithoutAccountsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutAccountsInput
@@ -377,62 +356,6 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
-export type UserCreateWithoutCreated_eventsInput = {
-  id?: string
-  name?: string | null
-  email?: string | null
-  emailVerified?: Date | string | null
-  image?: string | null
-  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutCreated_eventsInput = {
-  id?: string
-  name?: string | null
-  email?: string | null
-  emailVerified?: Date | string | null
-  image?: string | null
-  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutCreated_eventsInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutCreated_eventsInput, Prisma.UserUncheckedCreateWithoutCreated_eventsInput>
-}
-
-export type UserUpsertWithoutCreated_eventsInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutCreated_eventsInput, Prisma.UserUncheckedUpdateWithoutCreated_eventsInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutCreated_eventsInput, Prisma.UserUncheckedCreateWithoutCreated_eventsInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutCreated_eventsInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutCreated_eventsInput, Prisma.UserUncheckedUpdateWithoutCreated_eventsInput>
-}
-
-export type UserUpdateWithoutCreated_eventsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutCreated_eventsInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-}
-
 export type UserCreateWithoutAccountsInput = {
   id?: string
   name?: string | null
@@ -440,7 +363,6 @@ export type UserCreateWithoutAccountsInput = {
   emailVerified?: Date | string | null
   image?: string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  created_events?: Prisma.EventCreateNestedManyWithoutCreated_byInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -450,7 +372,6 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   emailVerified?: Date | string | null
   image?: string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  created_events?: Prisma.EventUncheckedCreateNestedManyWithoutCreated_byInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -476,7 +397,6 @@ export type UserUpdateWithoutAccountsInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  created_events?: Prisma.EventUpdateManyWithoutCreated_byNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -486,7 +406,6 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  created_events?: Prisma.EventUncheckedUpdateManyWithoutCreated_byNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -496,7 +415,6 @@ export type UserCreateWithoutSessionsInput = {
   emailVerified?: Date | string | null
   image?: string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  created_events?: Prisma.EventCreateNestedManyWithoutCreated_byInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -506,7 +424,6 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   emailVerified?: Date | string | null
   image?: string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  created_events?: Prisma.EventUncheckedCreateNestedManyWithoutCreated_byInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -532,7 +449,6 @@ export type UserUpdateWithoutSessionsInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  created_events?: Prisma.EventUpdateManyWithoutCreated_byNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -542,7 +458,6 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  created_events?: Prisma.EventUncheckedUpdateManyWithoutCreated_byNestedInput
 }
 
 
@@ -553,13 +468,11 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
 export type UserCountOutputType = {
   accounts: number
   sessions: number
-  created_events: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-  created_events?: boolean | UserCountOutputTypeCountCreated_eventsArgs
 }
 
 /**
@@ -586,13 +499,6 @@ export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.SessionWhereInput
 }
 
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountCreated_eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EventWhereInput
-}
-
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -602,7 +508,6 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   image?: boolean
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
-  created_events?: boolean | Prisma.User$created_eventsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -634,7 +539,6 @@ export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
-  created_events?: boolean | Prisma.User$created_eventsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -645,7 +549,6 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     accounts: Prisma.$AccountPayload<ExtArgs>[]
     sessions: Prisma.$SessionPayload<ExtArgs>[]
-    created_events: Prisma.$EventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1049,7 +952,6 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  created_events<T extends Prisma.User$created_eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$created_eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1517,30 +1419,6 @@ export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
-}
-
-/**
- * User.created_events
- */
-export type User$created_eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Event
-   */
-  select?: Prisma.EventSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Event
-   */
-  omit?: Prisma.EventOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.EventInclude<ExtArgs> | null
-  where?: Prisma.EventWhereInput
-  orderBy?: Prisma.EventOrderByWithRelationInput | Prisma.EventOrderByWithRelationInput[]
-  cursor?: Prisma.EventWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
 }
 
 /**

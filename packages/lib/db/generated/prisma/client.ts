@@ -29,8 +29,8 @@ export * from "./enums.ts"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more CreditRoleNames
- * const creditRoleNames = await prisma.creditRoleName.findMany()
+ * // Fetch zero or more Accounts
+ * const accounts = await prisma.account.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,26 +39,6 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
-/**
- * Model CreditRoleName
- * 
- */
-export type CreditRoleName = Prisma.CreditRoleNameModel
-/**
- * Model CreditRole
- * 
- */
-export type CreditRole = Prisma.CreditRoleModel
-/**
- * Model Credit
- * 
- */
-export type Credit = Prisma.CreditModel
-/**
- * Model Event
- * 
- */
-export type Event = Prisma.EventModel
 /**
  * Model Account
  * 

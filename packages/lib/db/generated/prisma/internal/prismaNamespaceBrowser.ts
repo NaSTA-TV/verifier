@@ -51,10 +51,6 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  CreditRoleName: 'CreditRoleName',
-  CreditRole: 'CreditRole',
-  Credit: 'Credit',
-  Event: 'Event',
   Account: 'Account',
   Session: 'Session',
   User: 'User',
@@ -75,56 +71,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const CreditRoleNameScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  order: 'order',
-  credit_role_id: 'credit_role_id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type CreditRoleNameScalarFieldEnum = (typeof CreditRoleNameScalarFieldEnum)[keyof typeof CreditRoleNameScalarFieldEnum]
-
-
-export const CreditRoleScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  order: 'order',
-  event_id: 'event_id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type CreditRoleScalarFieldEnum = (typeof CreditRoleScalarFieldEnum)[keyof typeof CreditRoleScalarFieldEnum]
-
-
-export const CreditScalarFieldEnum = {
-  id: 'id',
-  state: 'state',
-  progress: 'progress',
-  path: 'path',
-  size: 'size',
-  event_id: 'event_id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type CreditScalarFieldEnum = (typeof CreditScalarFieldEnum)[keyof typeof CreditScalarFieldEnum]
-
-
-export const EventScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  date: 'date',
-  created_by_id: 'created_by_id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
 export const AccountScalarFieldEnum = {

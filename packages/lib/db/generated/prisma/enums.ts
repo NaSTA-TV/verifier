@@ -9,26 +9,7 @@
 * 🟢 You can import this file directly.
 */
 
-export const CreditProgress = {
-  STARTED: 'STARTED',
-  BROWSER_LAUNCHED: 'BROWSER_LAUNCHED',
-  IMAGE_SAVED: 'IMAGE_SAVED',
-  SCROLL_GENERATED: 'SCROLL_GENERATED',
-  ENDCARD_ADDED: 'ENDCARD_ADDED',
-  UPLOADED: 'UPLOADED',
-  TIDIED: 'TIDIED'
-} as const
-
-export type CreditProgress = (typeof CreditProgress)[keyof typeof CreditProgress]
 
 
-export const CreditState = {
-  WAITING: 'WAITING',
-  GENERATING: 'GENERATING',
-  READY: 'READY',
-  FAILED: 'FAILED',
-  OUTDATED: 'OUTDATED',
-  DELETED: 'DELETED'
-} as const
-
-export type CreditState = (typeof CreditState)[keyof typeof CreditState]
+// This file is empty because there are no enums in the schema.
+export {}
