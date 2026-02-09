@@ -1,9 +1,8 @@
-import { testRouter } from "@/server/api/routers/test";
-import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
-import { creditRoleNamesRouter } from "./routers/credit-role-names";
-import { creditRolesRouter } from "./routers/credit-roles";
-import { creditsRouter } from "./routers/credits";
-import { eventsRouter } from "./routers/events";
+import {
+  createCallerFactory,
+  createTRPCRouter,
+  publicProcedure,
+} from "@/server/api/trpc";
 
 /**
  * This is the primary router for your server.
@@ -11,11 +10,7 @@ import { eventsRouter } from "./routers/events";
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-	credits: creditsRouter,
-	creditRoles: creditRolesRouter,
-	creditRoleNames: creditRoleNamesRouter,
-	events: eventsRouter,
-	test: testRouter,
+  ping: publicProcedure.query(() => ({ ok: true, pong: "lol" })),
 });
 
 // export type definition of API
