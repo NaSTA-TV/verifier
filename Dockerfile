@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile:1
 
 FROM node:20-alpine AS base
-RUN apk update && apk add ffmpeg=8.0.1-r1 chromium=143.0.7499.169-r0 redis=8.4.0-r0
+RUN apk update && apk add ffmpeg chromium redis
 
 FROM base AS install
 RUN apk update && apk add alpine-sdk python3
