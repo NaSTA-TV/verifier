@@ -7,13 +7,13 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-	try {
-		await db.$executeRaw(sql`SELECT 1;`);
-	} catch (_e) {
-		return NextResponse.json(
-			{ status: "not ok :(", reason: "Could not connect to database" },
-			{ status: 500 },
-		);
-	}
-	return NextResponse.json({ status: "ok" }, { status: 200 });
+  try {
+    await db.$executeRaw(sql`SELECT 1;`);
+  } catch (_e) {
+    return NextResponse.json(
+      { status: "not ok :(", reason: "Could not connect to database" },
+      { status: 500 },
+    );
+  }
+  return NextResponse.json({ status: "ok" }, { status: 200 });
 }

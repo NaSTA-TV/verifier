@@ -23,37 +23,20 @@ export function VideoDropzone(props: Partial<DropzoneProps>) {
           style={{ pointerEvents: "none" }}
         >
           <Dropzone.Accept>
-            <FaUpload
-              size={52}
-              color="var(--mantine-color-blue-6)"
-            />
+            <FaUpload size={52} color="var(--mantine-color-blue-6)" />
           </Dropzone.Accept>
           <Dropzone.Reject>
-            <FaX
-              size={52}
-              color="var(--mantine-color-red-6)"
-            />
+            <FaX size={52} color="var(--mantine-color-red-6)" />
           </Dropzone.Reject>
           <Dropzone.Idle>
-            <FaVideo
-              size={52}
-              color="var(--mantine-color-dimmed)"
-            />
+            <FaVideo size={52} color="var(--mantine-color-dimmed)" />
           </Dropzone.Idle>
 
           <div>
-            <Text
-              size="xl"
-              inline
-            >
+            <Text size="xl" inline>
               Drag your video here or click to select files
             </Text>
-            <Text
-              size="sm"
-              c="dimmed"
-              inline
-              mt={7}
-            >
+            <Text size="sm" c="dimmed" inline mt={7}>
               Attach only a single video file
             </Text>
           </div>

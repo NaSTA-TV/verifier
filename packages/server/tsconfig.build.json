@@ -1,16 +1,16 @@
 {
-	"extends": "./tsconfig.json",
-	"compilerOptions": {
-		"module": "commonjs",
-		"outDir": "build",
-		"target": "es2017",
-		"isolatedModules": false,
-		"noEmit": false,
-		"jsx": "react-jsx",
-		"allowImportingTsExtensions": null,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true
-	},
-	"include": ["src/**/*.ts"]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "build",
+    "target": "es2017",
+    "isolatedModules": false,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": null,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*.ts"]
 }

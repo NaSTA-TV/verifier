@@ -44,10 +44,7 @@ export function AppLayout(props: { children: ReactNode }) {
         padding="md"
       >
         <AppShell.Header>
-          <Group
-            h="100%"
-            px="md"
-          >
+          <Group h="100%" px="md">
             <Burger
               hiddenFrom="sm"
               onClick={toggleMobile}

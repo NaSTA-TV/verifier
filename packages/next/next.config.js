@@ -6,10 +6,10 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
-	output: "standalone",
-	experimental: {
-		optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
-	},
+  output: "standalone",
+  experimental: {
+    optimizePackageImports: ["@mantine/core", "@mantine/hooks"],
+  },
 };
 
 export default config;

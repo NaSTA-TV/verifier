@@ -98,7 +98,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:^2.2.5, @biomejs/biome@npm:^2.3.5":
+"@biomejs/biome@npm:^2.2.5":
   version: 2.3.5
   resolution: "@biomejs/biome@npm:2.3.5"
   dependencies:
@@ -4086,7 +4086,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nasta-verifier@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:^2.3.5"
     "@prisma/client": "npm:7.3.0"
     "@types/bun": "npm:latest"
     "@vercel/ncc": "npm:^0.38.4"
@@ -4095,6 +4094,7 @@ __metadata:
     dotenv-cli: "npm:^11.0.0"
     next: "npm:^15.2.3"
     nodemon: "npm:^3.1.11"
+    prettier: "npm:^3.8.1"
     prisma: "npm:7.3.0"
     socket.io: "npm:^4.8.1"
     socket.io-client: "npm:^4.8.1"
@@ -4722,6 +4722,15 @@ __metadata:
   version: 10.24.3
   resolution: "preact@npm:10.24.3"
   checksum: 10c0/c863df6d7be6a660480189762d8a8f2d4148733fc2bb9efbd9d2fd27315d2c7ede850a16077d716c91666c915c0349bd3c9699733e4f08457226a0519f408761
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.8.1":
+  version: 3.8.1
+  resolution: "prettier@npm:3.8.1"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/33169b594009e48f570471271be7eac7cdcf88a209eed39ac3b8d6d78984039bfa9132f82b7e6ba3b06711f3bfe0222a62a1bfb87c43f50c25a83df1b78a2c42
   languageName: node
   linkType: hard
 

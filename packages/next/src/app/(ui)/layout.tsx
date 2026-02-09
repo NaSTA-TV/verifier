@@ -34,10 +34,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html
-      lang="en"
-      {...mantineHtmlProps}
-    >
+    <html lang="en" {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>

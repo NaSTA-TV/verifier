@@ -1,23 +1,23 @@
 {
-	"extends": "../../tsconfig.json",
-	"compilerOptions": {
-		"outDir": "build",
-		"module": "esnext",
-		"target": "es2022",
-		"moduleResolution": "bundler",
-		"resolveJsonModule": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"skipLibCheck": true,
-		"noEmit": false,
-		"allowImportingTsExtensions": null,
-		"verbatimModuleSyntax": true,
-		"isolatedModules": false,
-		"rootDir": ".",
-		"rewriteRelativeImportExtensions": true
-	},
-	"include": ["./**/*.ts", "env.ts", "prisma.config.ts"],
-	"tsc-alias": {
-		"resolveFullPaths": true
-	}
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "module": "esnext",
+    "target": "es2022",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": null,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": false,
+    "rootDir": ".",
+    "rewriteRelativeImportExtensions": true
+  },
+  "include": ["./**/*.ts", "env.ts", "prisma.config.ts"],
+  "tsc-alias": {
+    "resolveFullPaths": true
+  }
 }

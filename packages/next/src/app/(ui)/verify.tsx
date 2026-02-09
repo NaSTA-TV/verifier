@@ -120,11 +120,7 @@ export function Verify() {
 
   return (
     <>
-      <Alert
-        icon={<FaCircleInfo />}
-        title=""
-        color="orange"
-      >
+      <Alert icon={<FaCircleInfo />} title="" color="orange">
         This page should be used as a guide for whether or not your video
         submission meets the required technical specs. If you have any questions
         about the validity of your submission please reach out to the Returning
@@ -139,11 +135,7 @@ export function Verify() {
       ) : (
         <>
           {error && (
-            <Alert
-              icon={<FaCircleXmark />}
-              title="Error"
-              color="red"
-            >
+            <Alert icon={<FaCircleXmark />} title="Error" color="red">
               {error}
             </Alert>
           )}
@@ -157,19 +149,12 @@ export function Verify() {
           />
           <Space h={"md"} />
           {file && !error && (
-            <Alert
-              icon={<FaFile />}
-              title="File Selected"
-              color="blue"
-            >
+            <Alert icon={<FaFile />} title="File Selected" color="blue">
               {file.name}
             </Alert>
           )}
           <Space h={"md"} />
-          <Button
-            disabled={!file}
-            onClick={probe}
-          >
+          <Button disabled={!file} onClick={probe}>
             Check
           </Button>
           <Space h={"md"} />

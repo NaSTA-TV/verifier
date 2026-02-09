@@ -20,34 +20,34 @@ var io: Server;
 validateEnv();
 
 app.prepare().then(async () => {
-	const httpServer = await prepareHttpServer(handler);
+  const httpServer = await prepareHttpServer(handler);
 
-	await runStartupTasks();
+  await runStartupTasks();
 
-	io = new Server(httpServer);
-	// io = io;
+  io = new Server(httpServer);
+  // io = io;
 
-	const pubClient = createClient();
-	const subClient = pubClient.duplicate();
+  const pubClient = createClient();
+  const subClient = pubClient.duplicate();
 
-	await Promise.all([pubClient.connect(), subClient.connect()]);
+  await Promise.all([pubClient.connect(), subClient.connect()]);
 
-	io.adapter(createAdapter(pubClient, subClient));
+  io.adapter(createAdapter(pubClient, subClient));
 
-	io.use(authenticateSocket);
+  io.use(authenticateSocket);
 
-	io.on("connection", async (_socket) => {
-		// if (socket.data.auth.invalidSession === true) {
-		//   socket.emit("invalidSession");
-		// }
-	});
+  io.on("connection", async (_socket) => {
+    // if (socket.data.auth.invalidSession === true) {
+    //   socket.emit("invalidSession");
+    // }
+  });
 
-	httpServer
-		.once("error", (err) => {
-			console.error(err);
-			process.exit(1);
-		})
-		.listen(port, () => {
-			console.log(`> Ready on http://${hostname}:${port}`);
-		});
+  httpServer
+    .once("error", (err) => {
+      console.error(err);
+      process.exit(1);
+    })
+    .listen(port, () => {
+      console.log(`> Ready on http://${hostname}:${port}`);
+    });
 });

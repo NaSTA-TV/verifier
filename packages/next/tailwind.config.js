@@ -8,23 +8,23 @@ const _plugin = require("tailwindcss/plugin");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
-	corePlugins: {
-		preflight: false,
-	},
-	theme: {
-		extend: {
-			screens: {
-				xs: "480px",
-			},
-		},
-	},
-	plugins: [
-		// require("@tailwindcss/forms")({
-		//   strategy: "class",
-		// }),
-		// require("tailwindcss-animate"),
-		// mantineVariantsPlugin,
-	],
-	darkMode: ["class", '[data-mantine-color-scheme="dark"]'],
+  content: ["./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+  corePlugins: {
+    preflight: false,
+  },
+  theme: {
+    extend: {
+      screens: {
+        xs: "480px",
+      },
+    },
+  },
+  plugins: [
+    // require("@tailwindcss/forms")({
+    //   strategy: "class",
+    // }),
+    // require("tailwindcss-animate"),
+    // mantineVariantsPlugin,
+  ],
+  darkMode: ["class", '[data-mantine-color-scheme="dark"]'],
 };
