@@ -1,5 +1,12 @@
-import { Title } from "@mantine/core";
+"use client";
 
-export default async function Home() {
-	return <Title>YSTV Crediter</Title>;
+import { NoSSR } from "../_components/no-ssr";
+import { Verify } from "./verify";
+
+export default function Home() {
+  return (
+    <NoSSR>
+      <Verify />
+    </NoSSR>
+  );
 }

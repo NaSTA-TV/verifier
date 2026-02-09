@@ -4,10 +4,10 @@ const { defineConfig } = require("@yarnpkg/types");
 module.exports = defineConfig({
 	async constraints({ Yarn }) {
 		const packageVersions = {
-			"@prisma/client": "6.18.0",
+			"@prisma/client": "7.3.0",
 			next: "^15.2.3",
 			minio: "^8.0.6",
-			prisma: "6.18.0",
+			prisma: "7.3.0",
 			"socket.io": "^4.8.1",
 			"socket.io-client": "^4.8.1",
 			zod: "^4.1.12",

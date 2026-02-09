@@ -1,12 +1,27 @@
 services:
-  redis:
-    image: redis:7
-    container_name: redis
-    ports:
-      - "6379:6379"
-    command: ["redis-server", "--appendonly", "yes"]
-    volumes:
-      - redis-data:/data
+  database:
+    # Official Postgres image from DockerHub (we use the last version)
+    image: "postgres:latest"
 
-volumes:
-  redis-data:
+    # By default, a Postgres database is running on the 5432 port.
+    # If we want to access the database from our computer (outside the container),
+    # we must share the port with our computer's port.
+    # The syntax is [port we want on our machine]:[port we want to retrieve in the container]
+    # Note: You are free to change your computer's port,
+    # but take into consideration that it will change the way
+    # you are connecting to your database.
+    ports:
+      - 5432:5432
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: verifier
+
+    volumes:
+      - ./db-data/:/var/lib/postgresql/
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379

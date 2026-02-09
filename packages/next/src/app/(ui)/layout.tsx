@@ -3,9 +3,9 @@ import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
 
 import {
-	ColorSchemeScript,
-	MantineProvider,
-	mantineHtmlProps,
+  ColorSchemeScript,
+  MantineProvider,
+  mantineHtmlProps,
 } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { Notifications } from "@mantine/notifications";
@@ -19,47 +19,50 @@ import { TRPCReactProvider } from "@/trpc/react";
 import { MinioConfigProvider } from "../_components/minio-provider";
 
 export const metadata: Metadata = {
-	title: "YSTV Crediter",
-	description: "Hopefully making credits easier",
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
+  title: "NaSTA Verifier",
+  description: "Hopefully making submissions easier",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default async function RootLayout({
-	children,
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
-	const session = await auth();
+  const session = await auth();
 
-	if (!session) {
-		return signIn();
-	}
+  if (!session) {
+    return signIn();
+  }
 
-	return (
-		<html lang="en" {...mantineHtmlProps}>
-			<head>
-				<ColorSchemeScript defaultColorScheme="auto" />
-			</head>
-			<body>
-				<MinioConfigProvider
+  return (
+    <html
+      lang="en"
+      {...mantineHtmlProps}
+    >
+      <head>
+        <ColorSchemeScript defaultColorScheme="auto" />
+      </head>
+      <body>
+        {/* <MinioConfigProvider
 					config={{
 						MINIO_BUCKET: env.MINIO_BUCKET,
 						MINIO_ENDPOINT: env.MINIO_ENDPOINT,
 						MINIO_USE_SSL: env.MINIO_USE_SSL,
 					}}
-				>
-					<SessionProvider>
-						<WebsocketProvider>
-							<TRPCReactProvider>
-								<MantineProvider defaultColorScheme="auto">
-									<ModalsProvider>
-										<AppLayout>{children}</AppLayout>
-										<Notifications />
-									</ModalsProvider>
-								</MantineProvider>
-							</TRPCReactProvider>
-						</WebsocketProvider>
-					</SessionProvider>
-				</MinioConfigProvider>
-			</body>
-		</html>
-	);
+				> */}
+        <SessionProvider>
+          <WebsocketProvider>
+            <TRPCReactProvider>
+              <MantineProvider defaultColorScheme="auto">
+                <ModalsProvider>
+                  <AppLayout>{children}</AppLayout>
+                  <Notifications />
+                </ModalsProvider>
+              </MantineProvider>
+            </TRPCReactProvider>
+          </WebsocketProvider>
+        </SessionProvider>
+        {/* </MinioConfigProvider> */}
+      </body>
+    </html>
+  );
 }

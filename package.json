@@ -1,5 +1,5 @@
 {
-	"name": "ystv-crediter",
+	"name": "nasta-verifier",
 	"module": "index.ts",
 	"type": "module",
 	"private": true,
@@ -26,7 +26,7 @@
 		"preinstall": "yarn constraints --fix"
 	},
 	"dependencies": {
-		"@prisma/client": "6.18.0",
+		"@prisma/client": "7.3.0",
 		"@yarnpkg/types": "^4.0.1",
 		"next": "^15.2.3"
 	},
@@ -37,7 +37,7 @@
 		"dotenv": "^17.2.3",
 		"dotenv-cli": "^11.0.0",
 		"nodemon": "^3.1.11",
-		"prisma": "6.18.0",
+		"prisma": "7.3.0",
 		"socket.io": "^4.8.1",
 		"socket.io-client": "^4.8.1",
 		"tsx": "^4.20.6",

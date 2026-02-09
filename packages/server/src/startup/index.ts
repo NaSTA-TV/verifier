@@ -3,9 +3,9 @@ import { checkDatabaseConnection } from "../lib";
 import { runCreditStartupTasks } from "./credits";
 
 export async function runStartupTasks() {
-	await checkDatabaseConnection();
+  await checkDatabaseConnection();
 
-	await checkMinioConnection();
+  // await checkMinioConnection();
 
-	await runCreditStartupTasks();
+  // await runCreditStartupTasks();
 }
