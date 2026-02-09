@@ -1,42 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Account` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Session` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `VerificationToken` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "public"."Account" DROP CONSTRAINT "Account_userId_fkey";
-
--- DropForeignKey
-ALTER TABLE "public"."Session" DROP CONSTRAINT "Session_userId_fkey";
-
--- DropTable
-DROP TABLE "public"."Account";
-
--- DropTable
-DROP TABLE "public"."Session";
-
--- DropTable
-DROP TABLE "public"."User";
-
--- DropTable
-DROP TABLE "public"."VerificationToken";
-
--- CreateTable
-CREATE TABLE "events" (
-    "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL,
-    "created_by_id" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "events_pkey" PRIMARY KEY ("id")
-);
-
 -- CreateTable
 CREATE TABLE "accounts" (
     "id" TEXT NOT NULL,
@@ -98,9 +59,6 @@ CREATE UNIQUE INDEX "verification_tokens_token_key" ON "verification_tokens"("to
 
 -- CreateIndex
 CREATE UNIQUE INDEX "verification_tokens_identifier_token_key" ON "verification_tokens"("identifier", "token");
-
--- AddForeignKey
-ALTER TABLE "events" ADD CONSTRAINT "events_created_by_id_fkey" FOREIGN KEY ("created_by_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
