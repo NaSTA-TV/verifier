@@ -28,7 +28,7 @@
   "dependencies": {
     "@prisma/client": "7.3.0",
     "@yarnpkg/types": "^4.0.1",
-    "next": "^15.2.3"
+    "next": "15.2.8"
   },
   "devDependencies": {
     "@types/bun": "latest",
