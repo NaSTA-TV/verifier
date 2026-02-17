@@ -228,7 +228,7 @@ function checkVideoAspect(
     return {
       name: checkName,
       status: CheckStatus.WARNING,
-      message: `Video stream does not contain pixel aspect information`,
+      message: `Video stream does not contain pixel aspect information, this can most likely be ignored`,
     };
 
   if (aspect !== "1:1") {

@@ -26,7 +26,6 @@ export function Verify() {
   const [loaded, setLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const ffmpegRef = useRef(new FFmpeg());
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const messageRef = useRef<HTMLParagraphElement | null>(null);
 
   const [error, setError] = useState<string>();
@@ -120,7 +119,11 @@ export function Verify() {
 
   return (
     <>
-      <Alert icon={<FaCircleInfo />} title="" color="orange">
+      <Alert
+        icon={<FaCircleInfo />}
+        title=""
+        color="orange"
+      >
         This page should be used as a guide for whether or not your video
         submission meets the required technical specs. If you have any questions
         about the validity of your submission please reach out to the Returning
@@ -135,7 +138,11 @@ export function Verify() {
       ) : (
         <>
           {error && (
-            <Alert icon={<FaCircleXmark />} title="Error" color="red">
+            <Alert
+              icon={<FaCircleXmark />}
+              title="Error"
+              color="red"
+            >
               {error}
             </Alert>
           )}
@@ -149,42 +156,81 @@ export function Verify() {
           />
           <Space h={"md"} />
           {file && !error && (
-            <Alert icon={<FaFile />} title="File Selected" color="blue">
+            <Alert
+              icon={<FaFile />}
+              title="File Selected"
+              color="blue"
+            >
               {file.name}
             </Alert>
           )}
           <Space h={"md"} />
-          <Button disabled={!file} onClick={probe}>
+          <Button
+            disabled={!file}
+            onClick={probe}
+          >
             Check
           </Button>
           <Space h={"md"} />
           {checks && (
-            <Table>
-              <Table.Thead>
-                <Table.Tr>
-                  <Table.Th>Check</Table.Th>
-                  <Table.Th>Status</Table.Th>
-                  <Table.Th>Info</Table.Th>
-                </Table.Tr>
-              </Table.Thead>
-              <Table.Tbody>
-                {checks.map((c) => (
-                  <Table.Tr key={c.name}>
-                    <Table.Td>{c.name}</Table.Td>
-                    <Table.Td>
-                      {c.status === CheckStatus.SUCCESS ? (
-                        <FaCircleCheck color="green" />
-                      ) : c.status === CheckStatus.WARNING ? (
-                        <FaExclamation color="orange" />
-                      ) : (
-                        <FaCircleXmark color="red" />
-                      )}
-                    </Table.Td>
-                    <Table.Td>{c.message}</Table.Td>
+            <>
+              {checks.find((v) => v.status === CheckStatus.ERROR) && (
+                <>
+                  <Alert
+                    icon={<FaCircleXmark />}
+                    title="Errors"
+                    color="red"
+                  >
+                    Any errors will be rejected as they are in breach of the
+                    technical specifications. If you believe any errors are
+                    shown incorrectly, you can contact the Returning Officer or
+                    the Technical Officer using the emails at the top of this
+                    page.
+                  </Alert>
+                  <Space h={"md"} />
+                </>
+              )}
+              {checks.find((v) => v.status === CheckStatus.WARNING) && (
+                <>
+                  <Alert
+                    icon={<FaCircleInfo />}
+                    title="Warnings"
+                    color="orange"
+                  >
+                    Warnings should be fine to submit, but may be
+                    considered a &quot;low quality&quot; entry.
+                  </Alert>
+                  <Space h={"md"} />
+                </>
+              )}
+
+              <Table>
+                <Table.Thead>
+                  <Table.Tr>
+                    <Table.Th>Check</Table.Th>
+                    <Table.Th>Status</Table.Th>
+                    <Table.Th>Info</Table.Th>
                   </Table.Tr>
-                ))}
-              </Table.Tbody>
-            </Table>
+                </Table.Thead>
+                <Table.Tbody>
+                  {checks.map((c) => (
+                    <Table.Tr key={c.name}>
+                      <Table.Td>{c.name}</Table.Td>
+                      <Table.Td>
+                        {c.status === CheckStatus.SUCCESS ? (
+                          <FaCircleCheck color="green" />
+                        ) : c.status === CheckStatus.WARNING ? (
+                          <FaExclamation color="orange" />
+                        ) : (
+                          <FaCircleXmark color="red" />
+                        )}
+                      </Table.Td>
+                      <Table.Td>{c.message}</Table.Td>
+                    </Table.Tr>
+                  ))}
+                </Table.Tbody>
+              </Table>
+            </>
           )}
         </>
       )}
