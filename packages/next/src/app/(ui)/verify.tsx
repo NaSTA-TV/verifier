@@ -30,7 +30,7 @@ export function Verify() {
 
   const [error, setError] = useState<string>();
 
-  const [output, setOutput] = useState<z.infer<typeof probeOutputSchema>>();
+  const [_output, setOutput] = useState<z.infer<typeof probeOutputSchema>>();
   const [checks, setChecks] = useState<CheckOutput[]>();
 
   const load = async () => {
@@ -119,11 +119,7 @@ export function Verify() {
 
   return (
     <>
-      <Alert
-        icon={<FaCircleInfo />}
-        title=""
-        color="orange"
-      >
+      <Alert icon={<FaCircleInfo />} title="" color="orange">
         This page should be used as a guide for whether or not your video
         submission meets the required technical specs. If you have any questions
         about the validity of your submission please reach out to the Returning
@@ -138,11 +134,7 @@ export function Verify() {
       ) : (
         <>
           {error && (
-            <Alert
-              icon={<FaCircleXmark />}
-              title="Error"
-              color="red"
-            >
+            <Alert icon={<FaCircleXmark />} title="Error" color="red">
               {error}
             </Alert>
           )}
@@ -156,19 +148,12 @@ export function Verify() {
           />
           <Space h={"md"} />
           {file && !error && (
-            <Alert
-              icon={<FaFile />}
-              title="File Selected"
-              color="blue"
-            >
+            <Alert icon={<FaFile />} title="File Selected" color="blue">
               {file.name}
             </Alert>
           )}
           <Space h={"md"} />
-          <Button
-            disabled={!file}
-            onClick={probe}
-          >
+          <Button disabled={!file} onClick={probe}>
             Check
           </Button>
           <Space h={"md"} />
@@ -176,11 +161,7 @@ export function Verify() {
             <>
               {checks.find((v) => v.status === CheckStatus.ERROR) && (
                 <>
-                  <Alert
-                    icon={<FaCircleXmark />}
-                    title="Errors"
-                    color="red"
-                  >
+                  <Alert icon={<FaCircleXmark />} title="Errors" color="red">
                     Any errors will be rejected as they are in breach of the
                     technical specifications. If you believe any errors are
                     shown incorrectly, you can contact the Returning Officer or
@@ -197,8 +178,8 @@ export function Verify() {
                     title="Warnings"
                     color="orange"
                   >
-                    Warnings should be fine to submit, but may be
-                    considered a &quot;low quality&quot; entry.
+                    Warnings should be fine to submit, but may be considered a
+                    &quot;low quality&quot; entry.
                   </Alert>
                   <Space h={"md"} />
                 </>
