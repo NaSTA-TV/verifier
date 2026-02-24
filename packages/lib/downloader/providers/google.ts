@@ -70,7 +70,9 @@ export const GoogleDriveDownloader: FileDownloader = {
       if (!success) return { ok: false };
 
       return { ok: true, path: tempName };
-    } catch (_) {
+    } catch (downloadError) {
+      console.log("gdrive download error:");
+      console.log(downloadError);
       return { ok: false };
     }
   },
