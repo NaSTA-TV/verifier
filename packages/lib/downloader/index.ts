@@ -228,6 +228,8 @@ export async function processQueue() {
 
   const verified = verifyProbeOutput(probe.output);
 
+  console.log(`verification: ${formatCheckOutputOverallStatus(verified)}`);
+
   const verifiedFormatted = formatCheckOutputForSheets(verified);
 
   await db.fileDownload.update({
@@ -239,17 +241,25 @@ export async function processQueue() {
     },
   });
 
+  console.log("Updating sheet...");
+
   await setTechSpecs(
     next.rowNum,
     formatCheckOutputOverallStatus(verified),
     verifiedFormatted,
   );
 
+  console.log("Updated!");
+
   const mc = await getMinioClient();
 
   const s3path = `${next.categoryString.toLowerCase().replace(" ", "-")}/${next.station.toLowerCase().replace(" ", "-")}.mp4`;
 
+  console.log(`Uploading to ${s3path}`);
+
   const s3putRes = await mc.fPutObject(env.MINIO_BUCKET, s3path, status.path);
+
+  console.log("Uploaded!");
 
   await db.fileDownload.update({
     where: {
@@ -259,6 +269,8 @@ export async function processQueue() {
       s3Path: s3path,
     },
   });
+
+  console.log("Done!");
 }
 
 export type SubmissionWithFileDownload = Submission & {
