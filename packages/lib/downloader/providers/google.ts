@@ -44,15 +44,15 @@ export const GoogleDriveDownloader: FileDownloader = {
 
     const drive = google.drive({ version: "v3", auth: googleAuth });
 
-    try {
-      const result = await drive.files.get({
-        fileId: fileId,
-      });
-    } catch (metaError) {
-      console.log("gdrive downmeta fetch error:");
-      console.log(metaError);
-      return { ok: false };
-    }
+    // try {
+    //   const result = await drive.files.get({
+    //     fileId: fileId,
+    //   });
+    // } catch (metaError) {
+    //   console.log("gdrive downmeta fetch error:");
+    //   console.log(metaError);
+    //   return { ok: false };
+    // }
 
     try {
       const result = await drive.files.get(
