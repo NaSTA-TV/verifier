@@ -191,7 +191,7 @@ export async function processQueue() {
   >((resolve) => {
     const probeOutputPath = status.path.concat(".json");
 
-    const ffprobe = spawn(process.env.FFPROBE_PATH ?? "ffmpeg", [
+    const ffprobe = spawn(process.env.FFPROBE_PATH ?? "ffprobe", [
       "-v",
       "error",
       "-show_format",
