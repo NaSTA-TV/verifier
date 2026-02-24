@@ -1,0 +1,21 @@
+enum DownloadStatus {
+  Unsupported
+  NeedsConfirmation
+  Confirmed
+  Downloaded
+  Processing
+  Passed
+  Failed
+}
+
+model FileDownload {
+  id String @id @default(cuid())
+
+  inputURL      String
+  downloader    String?
+  confirmedFile String?
+  s3Path        String?
+
+  status      DownloadStatus
+  submissions Submission[]
+}

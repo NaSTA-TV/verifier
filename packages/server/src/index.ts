@@ -1,7 +1,11 @@
 // import { checkDatabaseConnection, prepareHttpServer } from "./lib";
+
+import { newSubConfStatus, processQueue } from "@repo/lib/downloader";
 import { env, validateEnv } from "@repo/lib/env";
+import { updateSubmissions } from "@repo/lib/google";
 import { createAdapter } from "@socket.io/redis-adapter";
 import next from "next";
+import nodeCron from "node-cron";
 import { createClient } from "redis";
 import { Server } from "socket.io";
 import { authenticateSocket } from "./auth";
@@ -50,4 +54,12 @@ app.prepare().then(async () => {
     .listen(port, () => {
       console.log(`> Ready on http://${hostname}:${port}`);
     });
+
+  await processQueue();
+
+  nodeCron.schedule("* * * * *", async () => {
+    await updateSubmissions();
+    await newSubConfStatus();
+    await processQueue();
+  });
 });

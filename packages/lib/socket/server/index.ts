@@ -1,6 +1,7 @@
+// import "server-only";
+
 import { Emitter } from "@socket.io/redis-emitter";
 import { createClient } from "redis";
-import "server-only";
 
 import type { Server } from "socket.io";
 

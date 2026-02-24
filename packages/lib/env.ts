@@ -16,12 +16,13 @@ const envSchema = z.object({
     .default("development"),
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string(),
+  SUBMISSIONS_SHEET_ID: z.string().optional(),
   // KEYCLOAK_ISSUER: z.string(),
-  // MINIO_ENDPOINT: z.string(),
-  // MINIO_USE_SSL: z.enum(["true", "false"]).default("false"),
-  // MINIO_BUCKET: z.string(),
-  // MINIO_ACCESS_KEY: z.string(),
-  // MINIO_SECRET_KEY: z.string(),
+  MINIO_ENDPOINT: z.string(),
+  MINIO_USE_SSL: z.enum(["true", "false"]).default("false"),
+  MINIO_BUCKET: z.string(),
+  MINIO_ACCESS_KEY: z.string(),
+  MINIO_SECRET_KEY: z.string(),
 });
 
 export function validateEnv(): z.infer<typeof envSchema> {

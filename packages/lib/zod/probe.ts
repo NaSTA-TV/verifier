@@ -1,12 +1,6 @@
 import z from "zod";
 
 export const probeOutputSchema = z.object({
-  // "programs": [
-
-  // ],
-  // "stream_groups": [
-
-  // ],
   streams: z.array(
     z.union([
       z.object({
@@ -23,11 +17,15 @@ export const probeOutputSchema = z.object({
       z.object({
         codec_type: z.literal("audio"),
         codec_name: z.string(),
-        profile: z.string(),
+        profile: z.string().default("NONE"),
         sample_rate: z.coerce.number(),
         channels: z.number(),
         channel_layout: z.string(),
         bit_rate: z.coerce.number(),
+      }),
+      z.object({
+        codec_type: z.literal("data"),
+        codec_tag_string: z.string(),
       }),
     ]),
   ),

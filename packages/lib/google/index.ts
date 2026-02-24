@@ -2,43 +2,40 @@ import path from "node:path";
 import process from "node:process";
 import { google } from "googleapis";
 
+export * from "./sheets";
+
 // The scope for reading file metadata.
 const SCOPES = [
   "https://www.googleapis.com/auth/drive.readonly",
   "https://www.googleapis.com/auth/drive.metadata.readonly",
+  "https://www.googleapis.com/auth/spreadsheets",
 ];
 // The path to the credentials file.
 const CREDENTIALS_PATH = path.join(process.cwd(), "secrets/credentials.json");
 
+export const googleAuth = new google.auth.GoogleAuth({
+  scopes: SCOPES,
+  keyFile: CREDENTIALS_PATH,
+});
 /**
  * Lists the names and IDs of up to 10 files.
  */
-async function listFiles() {
-  // Authenticate with Google and get an authorized client.
-  const auth = new google.auth.GoogleAuth({
-    scopes: SCOPES,
-    keyFile: CREDENTIALS_PATH,
-  });
+export async function listFiles(url: string) {
+  const fileId = getFolderId(url);
 
-  // Create a new Drive API client.
-  const drive = google.drive({ version: "v3", auth });
-  // Get the list of files.
+  const drive = google.drive({ version: "v3", auth: googleAuth });
   const result = await drive.files.list({
     pageSize: 10,
-    q: "'18GTPIomg8DdFpl4WJtgDVPq-BIG-mxpd' in parents",
+    q: `'${fileId}' in parents`,
     fields: "nextPageToken, files(id, name)",
   });
   const files = result.data.files;
-  if (!files || files.length === 0) {
-    console.log("No files found.");
-    return;
-  }
-
-  console.log("Files:");
-  // Print the name and ID of each file.
-  files.forEach((file) => {
-    console.log(`${file.name} (${file.id})`);
-  });
+  return files;
 }
 
-await listFiles();
+export function getFolderId(url: string) {
+  return url
+    .replace(/https:\/\/drive\.google\.com\/drive\/folders\//, "")
+    .split("?")
+    .at(0);
+}

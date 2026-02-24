@@ -1,0 +1,34 @@
+enum SubmissionStatus {
+  Replaced
+  Verified
+  RuleBreak
+  Assigned
+  Unassigned
+}
+
+model Submission {
+  id     String @id @default(cuid())
+  rowNum Int
+
+  timestamp         DateTime
+  submitterEmail    String
+  submitterFullName String
+  station           String
+  categoryString    String
+  submissionName    String
+  submittedLink     String
+  submissionLength  String
+  writtenSubmission String
+  verificationLink  String
+  clocked           Boolean
+  IDinSheet         String
+  latest            Boolean
+  verified          Boolean
+  assigned          Boolean
+  status            SubmissionStatus
+
+  fileDownloadId String?
+  fileDownload   FileDownload? @relation(fields: [fileDownloadId], references: [id])
+
+  @@unique([timestamp, station, categoryString])
+}

@@ -3,6 +3,7 @@ import {
   createTRPCRouter,
   publicProcedure,
 } from "@/server/api/trpc";
+import { submissionsRouter } from "./routers/submissions";
 
 /**
  * This is the primary router for your server.
@@ -10,7 +11,7 @@ import {
  * All routers added in /api/routers should be manually added here.
  */
 export const appRouter = createTRPCRouter({
-  ping: publicProcedure.query(() => ({ ok: true, pong: "lol" })),
+  submissions: submissionsRouter,
 });
 
 // export type definition of API

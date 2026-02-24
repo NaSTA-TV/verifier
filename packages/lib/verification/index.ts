@@ -1,6 +1,8 @@
 import z from "zod";
 import type { probeOutputSchema } from "../zod";
 
+export * from "./format";
+
 export enum CheckStatus {
   SUCCESS,
   WARNING,
@@ -102,6 +104,19 @@ function checkStreams(
         "Only a single video or audio stream found, there should be both a single video and audio stream",
     };
   }
+  if (
+    probeOutput.streams.filter(
+      (c) => c.codec_type === "video" || c.codec_type === "audio",
+    ).length === 2
+  ) {
+    return {
+      name: "Streams",
+      status: CheckStatus.WARNING,
+      message:
+        "Some data streams (possibly timecode) were found but there should only be video or audio, this can be ignored",
+    };
+  }
+
   return {
     name: "Streams",
     status: CheckStatus.ERROR,
