@@ -52,22 +52,26 @@ export const GoogleDriveDownloader: FileDownloader = {
       return { ok: false };
     }
 
-    const result = await drive.files.get(
-      {
-        fileId: fileId,
-        alt: "media",
-      },
-      { responseType: "stream" },
-    );
+    try {
+      const result = await drive.files.get(
+        {
+          fileId: fileId,
+          alt: "media",
+        },
+        { responseType: "stream" },
+      );
 
-    const success = await new Promise<boolean>((resolve) => {
-      result.data.on("end", () => resolve(true));
-      result.data.on("error", () => resolve(false));
-      result.data.pipe(dest);
-    });
+      const success = await new Promise<boolean>((resolve) => {
+        result.data.on("end", () => resolve(true));
+        result.data.on("error", () => resolve(false));
+        result.data.pipe(dest);
+      });
 
-    if (!success) return { ok: false };
+      if (!success) return { ok: false };
 
-    return { ok: true, path: tempName };
+      return { ok: true, path: tempName };
+    } catch (_) {
+      return { ok: false };
+    }
   },
 };
