@@ -26,9 +26,11 @@ export async function updateSubmissions() {
     if (!row || row[0] === "") break;
     const parsedRow = parseRow(row);
 
+    if (!parsedRow) break;
+
     if (
-      parsedRow.categoryString in
-      ["Tim Marshall Award for Special Recognition", "Technical Innovation"]
+      parsedRow.categoryString.includes("Marshall") ||
+      parsedRow.categoryString.includes("Technical")
     )
       break;
 
@@ -152,6 +154,4 @@ function parseRow(row: unknown[]) {
   });
 
   if (parsed.success) return parsed.data;
-
-  throw parsed.error;
 }
