@@ -48,7 +48,9 @@ export const GoogleDriveDownloader: FileDownloader = {
       const result = await drive.files.get({
         fileId: fileId,
       });
-    } catch (_) {
+    } catch (metaError) {
+      console.log("gdrive downmeta fetch error:");
+      console.log(metaError);
       return { ok: false };
     }
 
