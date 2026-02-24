@@ -1,14 +1,9 @@
-import { exec, spawn } from "node:child_process";
 import { createWriteStream } from "node:fs";
 import path from "node:path";
-import util from "node:util";
 import { google } from "googleapis";
-import temp, { mkdir } from "temp";
-import { db } from "../../db";
+import temp from "temp";
 import { googleAuth, listFiles } from "../../google";
 import type { FileDownloader } from "..";
-
-const spawnAsync = util.promisify(spawn);
 
 export const GoogleDriveDownloader: FileDownloader = {
   urlRegex: /https:\/\/drive\.google\.com\/.*/,

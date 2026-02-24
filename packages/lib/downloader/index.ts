@@ -257,7 +257,7 @@ export async function processQueue() {
 
   console.log(`Uploading to ${s3path}`);
 
-  const s3putRes = await mc.fPutObject(env.MINIO_BUCKET, s3path, status.path);
+  await mc.fPutObject(env.MINIO_BUCKET, s3path, status.path);
 
   console.log("Uploaded!");
 
