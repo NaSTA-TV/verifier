@@ -55,7 +55,7 @@ app.prepare().then(async () => {
       console.log(`> Ready on http://${hostname}:${port}`);
     });
 
-  await processQueue();
+  // await processQueue();
 
   nodeCron.schedule("* * * * *", async () => {
     await updateSubmissions();

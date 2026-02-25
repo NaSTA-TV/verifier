@@ -26,13 +26,13 @@ export async function updateSubmissions() {
     if (!row || row[0] === "") break;
     const parsedRow = parseRow(row);
 
-    if (!parsedRow) break;
+    if (!parsedRow) continue;
 
     if (
       parsedRow.categoryString.includes("Marshall") ||
       parsedRow.categoryString.includes("Technical")
     )
-      break;
+      continue;
 
     await db.submission.upsert({
       where: {
