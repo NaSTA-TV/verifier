@@ -9,6 +9,7 @@ import {
   Group,
   Loader,
   Space,
+  Stack,
   Table,
 } from "@mantine/core";
 import type { FileWithPath } from "@mantine/dropzone";
@@ -138,7 +139,7 @@ export function Verify() {
   useFavicon(favicon ?? "/favicon.ico");
 
   return (
-    <>
+    <Stack>
       <Alert icon={<FaCircleInfo />} title="" color="orange">
         This page should be used as a guide for whether or not your video
         submission meets the required technical specs. If you have any questions
@@ -147,7 +148,6 @@ export function Verify() {
         any bugs or other issues with this site, please reach out to the
         Technical Officer at <a href="mailto:tech@nasta.tv">tech@nasta.tv</a>.
       </Alert>
-      <Space h={"md"} />
       {!loaded && isLoading ? (
         <Center>
           <Loader />
@@ -159,7 +159,6 @@ export function Verify() {
               <Alert icon={<FaCircleXmark />} title="Error" color="red">
                 {error}
               </Alert>
-              <Space h={"md"} />
             </>
           )}
           <VideoDropzone
@@ -169,13 +168,11 @@ export function Verify() {
             }}
             onReject={() => setError("That doesn't look like an MP4 file")}
           />
-          <Space h={"md"} />
           {file && !error && (
             <Alert icon={<FaFile />} title="File Selected" color="blue">
               {file.name}
             </Alert>
           )}
-          <Space h={"md"} />
           <Group>
             <Button disabled={!file} onClick={probe}>
               Check
@@ -194,44 +191,29 @@ export function Verify() {
               Clear
             </Button>
           </Group>
-          <Space h={"md"} />
           {checks && (
             <>
               {checks.find((v) => v.status === CheckStatus.ERROR) && (
-                <>
-                  <Alert icon={<FaCircleXmark />} title="Errors" color="red">
-                    Any errors will be rejected as they are in breach of the
-                    technical specifications. If you believe any errors are
-                    shown incorrectly, you can contact the Returning Officer or
-                    the Technical Officer using the emails at the top of this
-                    page.
-                  </Alert>
-                  <Space h={"md"} />
-                </>
+                <Alert icon={<FaCircleXmark />} title="Errors" color="red">
+                  Any errors will be rejected as they are in breach of the
+                  technical specifications. If you believe any errors are shown
+                  incorrectly, you can contact the Returning Officer or the
+                  Technical Officer using the emails at the top of this page.
+                </Alert>
               )}
               {checks.find((v) => v.status === CheckStatus.WARNING) && (
-                <>
-                  <Alert
-                    icon={<FaCircleInfo />}
-                    title="Warnings"
-                    color="orange"
-                  >
-                    Warnings should be fine to submit, but may be considered a
-                    &quot;low quality&quot; entry.
-                  </Alert>
-                  <Space h={"md"} />
-                </>
+                <Alert icon={<FaCircleInfo />} title="Warnings" color="orange">
+                  Warnings should be fine to submit, but may be considered a
+                  &quot;low quality&quot; entry.
+                </Alert>
               )}
               {!(
                 checks.find((v) => v.status === CheckStatus.ERROR) ||
                 checks.find((v) => v.status === CheckStatus.WARNING)
               ) && (
-                <>
-                  <Alert icon={<FaCircleCheck />} title="Success" color="green">
-                    We found no issues with the video file you submitted.
-                  </Alert>
-                  <Space h={"md"} />
-                </>
+                <Alert icon={<FaCircleCheck />} title="Success" color="green">
+                  We found no issues with the video file you submitted.
+                </Alert>
               )}
 
               <Table>
@@ -264,6 +246,6 @@ export function Verify() {
           )}
         </>
       )}
-    </>
+    </Stack>
   );
 }
