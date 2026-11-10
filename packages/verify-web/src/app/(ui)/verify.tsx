@@ -2,7 +2,15 @@
 
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile, toBlobURL } from "@ffmpeg/util";
-import { Alert, Button, Center, Loader, Space, Table } from "@mantine/core";
+import {
+  Alert,
+  Button,
+  Center,
+  Group,
+  Loader,
+  Space,
+  Table,
+} from "@mantine/core";
 import type { FileWithPath } from "@mantine/dropzone";
 import {
   type CheckOutput,
@@ -20,8 +28,11 @@ import {
 } from "react-icons/fa6";
 import type z from "zod";
 import { VideoDropzone } from "../_components/dropzone";
+import { useFavicon } from "@mantine/hooks";
 
 export function Verify() {
+  const [favicon, setFavicon] = useState<string>();
+
   const [file, setFile] = useState<FileWithPath>();
   const [loaded, setLoaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -107,6 +118,13 @@ export function Verify() {
 
     const verifiedOutput = verifyProbeOutput(probeOutput.data);
 
+    if (verifiedOutput.find((v) => v.status === CheckStatus.ERROR)) {
+      setFavicon("/nasta-red.png");
+    } else if (verifiedOutput.find((v) => v.status === CheckStatus.WARNING)) {
+      setFavicon("/nasta-orange.png");
+    } else {
+      setFavicon("/nasta-green.png");
+    }
     setChecks(verifiedOutput);
   };
 
@@ -116,6 +134,8 @@ export function Verify() {
       load();
     }
   });
+
+  useFavicon(favicon ?? "/favicon.ico");
 
   return (
     <>
@@ -127,6 +147,7 @@ export function Verify() {
         any bugs or other issues with this site, please reach out to the
         Technical Officer at <a href="mailto:tech@nasta.tv">tech@nasta.tv</a>.
       </Alert>
+      <Space h={"md"} />
       {!loaded && isLoading ? (
         <Center>
           <Loader />
@@ -134,11 +155,13 @@ export function Verify() {
       ) : (
         <>
           {error && (
-            <Alert icon={<FaCircleXmark />} title="Error" color="red">
-              {error}
-            </Alert>
+            <>
+              <Alert icon={<FaCircleXmark />} title="Error" color="red">
+                {error}
+              </Alert>
+              <Space h={"md"} />
+            </>
           )}
-          <Space h={"md"} />
           <VideoDropzone
             onDrop={(files) => {
               setFile(files.at(0));
@@ -153,9 +176,24 @@ export function Verify() {
             </Alert>
           )}
           <Space h={"md"} />
-          <Button disabled={!file} onClick={probe}>
-            Check
-          </Button>
+          <Group>
+            <Button disabled={!file} onClick={probe}>
+              Check
+            </Button>
+            <Button
+              color="red"
+              ml={"auto"}
+              disabled={!file}
+              onClick={() => {
+                setFile(undefined);
+                setError(undefined);
+                setOutput(undefined);
+                setChecks(undefined);
+              }}
+            >
+              Clear
+            </Button>
+          </Group>
           <Space h={"md"} />
           {checks && (
             <>
@@ -180,6 +218,17 @@ export function Verify() {
                   >
                     Warnings should be fine to submit, but may be considered a
                     &quot;low quality&quot; entry.
+                  </Alert>
+                  <Space h={"md"} />
+                </>
+              )}
+              {!(
+                checks.find((v) => v.status === CheckStatus.ERROR) ||
+                checks.find((v) => v.status === CheckStatus.WARNING)
+              ) && (
+                <>
+                  <Alert icon={<FaCircleCheck />} title="Success" color="green">
+                    We found no issues with the video file you submitted.
                   </Alert>
                   <Space h={"md"} />
                 </>

@@ -15,7 +15,7 @@ import { AppLayout } from "@/app/_components/app-shell";
 export const metadata: Metadata = {
   title: "NaSTA Verifier",
   description: "Hopefully making submissions easier",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  // icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default async function RootLayout({
@@ -24,6 +24,7 @@ export default async function RootLayout({
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
+        <link rel="icon" href="/nasta-black.png" type="image/png" />
         <ColorSchemeScript defaultColorScheme="auto" />
       </head>
       <body>
